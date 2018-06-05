@@ -1,6 +1,18 @@
 *** Settings ***
-Library  String
+Library   DatabaseLibrary
 
 *** Test Cases ***
-Test Robot Framework Logging
-  Log  "Test Logging"
+Connect to MariaDB...
+    Connect To Database    pymysql	    menagerie    baffle    baffle    127.0.0.1   3306
+
+There Should Be 14 records in Pet table (MariaDB)
+    Row Count Is Equal To X   select name from pet    14
+
+Disconnect the DB...
+    Disconnect From Database
+
+Connect to BaffleShield...
+    Connect To Database    pymysql	    menagerie    baffle    baffle    127.0.0.1   8444
+
+There Should Be 14 records in Pet table (BaffleShield)
+    Row Count Is Equal To X   select name from pet    14
