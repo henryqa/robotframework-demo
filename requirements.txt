@@ -1,0 +1,6 @@
+docutils==0.14
+PyMySQL==0.8.1
+robotframework==3.0.4
+robotframework-databaselibrary==1.0.1
+six==1.11.0
+wxPython==4.0.1
